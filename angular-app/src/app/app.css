@@ -1,0 +1,88 @@
+.about-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    background: #f7f7f7;
+    min-height: 100vh;
+  }
+  
+  .about-card {
+    max-width: 600px;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+  }
+  
+  .profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 4px solid #4a90e2;
+  }
+  
+  h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .tagline {
+    color: #4a90e2;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #555;
+  }
+  
+  h2 {
+    margin-top: 25px;
+    color: #333;
+    border-bottom: 2px solid #4a90e2;
+    display: inline-block;
+    padding-bottom: 4px;
+  }
+  
+  .skills {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+  }
+  
+  .skills li {
+    background: #e6f0fa;
+    display: inline-block;
+    margin: 6px 8px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: #333;
+  }
+  
+  .links {
+    margin-top: 15px;
+  }
+  
+  .links a {
+    display: inline-block;
+    margin: 0 10px;
+    color: #4a90e2;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+  }
+  
+  .links a:hover {
+    color: #1c5fb8;
+  }
+  
