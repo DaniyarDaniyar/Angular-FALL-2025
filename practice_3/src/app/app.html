@@ -1,0 +1,77 @@
+<section class="about-container">
+  <div class="about-card">
+    <img
+      src="profile-placeholder.jpg"
+      alt="Profile picture"
+      class="profile-photo"
+    />
+
+    <h1>Hello, I'm {{ Name() }}</h1>
+    <p class="tagline">4th year student</p>
+
+    <img src="{{ hello_gif() }}" class="gif_image" /> <br />
+
+    <button
+      (click)="likeBtn()"
+      [disabled]="isButtonDisabled()"
+      class="button-21"
+    >
+      👍 Like
+    </button>
+
+    @if (isButtonDisabled() == false) {
+      <p class="likes">{{ likes() }}</p>
+    }
+    @else {
+      <p class="likes disabled">Likes disabled (likes > 10)</p>
+    }
+
+    <p class="description">{{ Description() }}</p>
+
+    <h2>Skills</h2>
+    <ul class="skills">
+      <li>Angular & TypeScript</li>
+      <li>Python / Django</li>
+      <li>Game Development (Unity, C#)</li>
+      <li>Golang</li>
+    </ul>
+
+    <h2>Links</h2>
+    <div class="links">
+      <a href="https://github.com/DaniyarDaniyar" target="_blank">GitHub</a>
+      <a
+        href="https://www.linkedin.com/in/daniyar-kylyshbekov-168195256/"
+        target="_blank"
+        >LinkedIn</a
+      >
+    </div>
+
+    <br />
+    <button (click)="ToggleFn()" class="button-21 toggle-btn">
+      {{ Show() ? "Hide form" : "Show form" }}
+    </button>
+
+    @if (Show()) {
+      <div class="form-container">
+        <img src="https://i.imgur.com/kOXnswR.gif" class="gif_image" />
+        <p class="form-title">{{ thx() }}</p>
+
+        <input
+          [(ngModel)]="email"
+          placeholder="Enter your email"
+          class="form-input"
+        />
+
+        <button (click)="subscribeFn()" class="button-21 subscribe-btn">
+          Subscribe
+        </button>
+
+        @if (subscribe()) {
+          <p class="success-msg">
+            ✅ Thanks, {{ email() }}, we’ll be in touch!
+          </p>
+        }
+      </div>
+    }
+  </div>
+</section>

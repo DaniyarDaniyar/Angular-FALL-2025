@@ -1,0 +1,188 @@
+.about-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    background: linear-gradient(135deg, #f0f7ff, #e6f0fa);
+    min-height: 100vh;
+  }
+  
+  .about-card {
+    max-width: 650px;
+    width: 100%;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    transition: transform 0.2s ease;
+  }
+  
+  .about-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 5px solid #4a90e2;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    font-size: 2.4rem;
+    margin-bottom: 8px;
+    color: #222;
+  }
+  
+  .tagline {
+    color: #4a90e2;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .gif_image {
+    width: 220px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .likes {
+    margin: 10px 0;
+    font-size: 1.1rem;
+    color: #333;
+  }
+  
+  .likes.disabled {
+    color: #999;
+  }
+  
+  .description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 20px 0;
+    color: #555;
+  }
+  
+  h2 {
+    margin-top: 30px;
+    color: #333;
+    border-bottom: 2px solid #4a90e2;
+    display: inline-block;
+    padding-bottom: 4px;
+    font-size: 1.3rem;
+  }
+  
+  .skills {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+  }
+  
+  .skills li {
+    background: #e6f0fa;
+    display: inline-block;
+    margin: 6px 8px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    color: #333;
+    transition: background 0.2s;
+  }
+  
+  .skills li:hover {
+    background: #d4e5f9;
+  }
+  
+  .links {
+    margin-top: 15px;
+  }
+  
+  .links a {
+    display: inline-block;
+    margin: 0 10px;
+    color: #4a90e2;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+  }
+  
+  .links a:hover {
+    color: #1c5fb8;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;   
+    gap: 12px;             
+    max-width: 320px;
+    margin: 20px auto;     
+    text-align: center;
+  }
+  
+  .form-container .gif_image {
+    width: 250px;
+    border-radius: 12px;
+    display: block;
+    margin: 0 auto 10px auto; 
+  }
+  
+  .form-title {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #444;
+  }
+  
+  .form-input {
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border 0.2s;
+  }
+  
+  .form-input:focus {
+    border: 1px solid #4a90e2;
+    outline: none;
+  }
+  
+  .success-msg {
+    margin-top: 10px;
+    color: #2b9e46;
+    font-weight: 600;
+  }
+  
+  /* Кнопка */
+  .button-21 {
+    align-items: center;
+    appearance: none;
+    background-image: linear-gradient(1deg, #4f58fd, #149bf3 99%);
+    border-radius: 100px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: CircularStd, sans-serif;
+    font-size: 1rem;
+    justify-content: center;
+    line-height: 1.5;
+    padding: 10px 24px;
+    transition: background-position 0.3s, transform 0.1s;
+    white-space: nowrap;
+  }
+  
+  .button-21:hover {
+    background-position: -20px -20px;
+    transform: scale(1.05);
+  }
+  
+  .button-21:active {
+    transform: scale(0.97);
+  }
+  
