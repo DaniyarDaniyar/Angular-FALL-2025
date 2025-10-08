@@ -1,0 +1,12 @@
+<div class="todo-container">
+    <button (click)="loadTodos()">Load Todos</button>
+  
+    <ul>
+      @for (todo of todos(); track todo.id) {
+        <li [class.completed]="todo.completed">
+          <strong>{{ todo.id }}.</strong> {{ todo.title }}
+        </li>
+      }
+    </ul>
+  </div>
+  
