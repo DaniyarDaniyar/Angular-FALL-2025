@@ -1,0 +1,22 @@
+<div class="todo-container">
+  <h2 class="title">Todo Search</h2>
+
+  <div class="controls">
+    <input
+      type="text"
+      placeholder="🔍 Search todos..."
+      [value]="query"
+      (input)="onInput($event)"
+      class="search-input"
+    />
+    <button (click)="loadTodos()" class="load-btn">Reload</button>
+  </div>
+
+  <ul>
+    @for (todo of todos(); track todo.id) {
+      <li [class.completed]="todo.completed">
+        <strong>{{ todo.id }}.</strong> {{ todo.title }}
+      </li>
+    }
+  </ul>
+</div>
