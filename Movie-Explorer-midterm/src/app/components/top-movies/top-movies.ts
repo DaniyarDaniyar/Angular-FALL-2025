@@ -59,7 +59,7 @@ export class TopMoviesComponent {
 
   like(movie: ClassicMovie) {
     movie.Likes++;
-    // Для обновления интерфейса пересоздаём signal массив
     this.movies.update(m => [...m]);
   }
 }
+
