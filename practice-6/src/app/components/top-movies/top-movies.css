@@ -1,0 +1,75 @@
+.top-container {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1rem;
+    background: #f8faff;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .movie-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 10px;
+  }
+  
+  .movie-card {
+    width: 180px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+  }
+  
+  .movie-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .movie-card img {
+    width: 100%;
+    border-radius: 6px;
+  }
+  
+  .btn-like {
+    background: #ff9800;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 8px;
+  }
+  
+  .comment-box {
+    margin-top: 10px;
+  }
+  
+  .comment-box input {
+    width: 90%; 
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    text-align: center; 
+  }
+  
+  .comment-box input::placeholder {
+    text-align: center; 
+    color: #999;
+  }
+  
+  input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  
+  .comment {
+    margin-top: 5px;
+    font-size: 13px;
+    color: #444;
+  }
+  

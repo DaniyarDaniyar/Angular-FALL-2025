@@ -1,0 +1,35 @@
+<div class="container">
+  <h1>Movie Explorer</h1>
+
+  <input
+    type="text"
+    placeholder="Search movies..."
+    [value]="query"
+    (input)="onInput($event)"
+  />
+
+  <div class="movie-grid">
+    @for (movie of movies(); track movie.imdbID) {
+      <div class="movie-card">
+        <div class="movie-content">
+          <a [routerLink]="`/movies/${movie.imdbID}`"><img [src]="movie.Poster" alt="{{ movie.Title }}" /></a>
+          <h3><a [routerLink]="`/movies/${movie.imdbID}`">{{movie.Title}}</a></h3>
+          <p>{{ movie.Year }}</p>
+
+          @if (Show() && selectedMovie()?.imdbID === movie.imdbID) {
+            <div class="details">
+              <p><strong>Type:</strong> {{ movie.Type }}</p>
+              <p><strong>IMDb:</strong><a href="https://www.imdb.com/title/{{movie.imdbID}}">imdb</a></p>
+            </div>
+          }
+        </div>
+
+        <button class="btn" (click)="ToggleFn(movie)">
+          {{ Show() && selectedMovie()?.imdbID === movie.imdbID ? "Hide Details" : "View Details" }}
+        </button>
+      </div>
+    }
+  </div>
+
+  <button class="load-more" (click)="loadMore()">⬇️ Load more</button>
+</div>

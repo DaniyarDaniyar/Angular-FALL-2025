@@ -1,0 +1,61 @@
+<div class="detail-container">
+    <button class="back" (click)="back()">Back</button>
+    <!-- LOADING -->
+    @if (loading()) {
+      <div class="loading">
+        <p>Loading movie details...</p>
+      </div>
+    }
+  
+    <!-- ERROR -->
+    @if (error()) {
+      <div class="error">
+        <p>{{ error() }}</p>
+      </div>
+    }
+  
+    <!-- MOVIE DETAILS -->
+    @if (movie()) {
+      <div class="movie-box">
+  
+        <div class="poster">
+          <img [src]="movie()!.Poster" [alt]="movie()!.Title" />
+        </div>
+  
+        <div class="info">
+          <h1>{{ movie()!.Title }}</h1>
+          <p class="year">{{ movie()!.Year }}</p>
+  
+          <p><strong>Genre:</strong> {{ movie()!.Genre }}</p>
+          <p><strong>Released:</strong> {{ movie()!.Released }}</p>
+          <p><strong>Runtime:</strong> {{ movie()!.Runtime }}</p>
+  
+          <p><strong>Director:</strong> {{ movie()!.Director }}</p>
+          <p><strong>Writer:</strong> {{ movie()!.Writer }}</p>
+          <p><strong>Actors:</strong> {{ movie()!.Actors }}</p>
+  
+          <p class="plot">
+            <strong>Plot:</strong> {{ movie()!.Plot }}
+          </p>
+  
+          <p><strong>Language:</strong> {{ movie()!.Language }}</p>
+          <p><strong>Country:</strong> {{ movie()!.Country }}</p>
+          <p><strong>Awards:</strong> {{ movie()!.Awards }}</p>
+  
+          <p class="rating">
+            ⭐ <strong>{{ movie()!.imdbRating }}</strong> / 10
+          </p>
+  
+          <a
+            class="imdb-link"
+            target="_blank"
+            [href]="'https://www.imdb.com/title/' + movie()!.imdbID"
+          >
+            View on IMDb ↗
+          </a>
+        </div>
+      </div>
+    }
+  
+  </div>
+  
