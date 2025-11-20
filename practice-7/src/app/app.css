@@ -1,0 +1,58 @@
+/* HEADER WRAPPER */
+.header {
+    width: 100%;
+    background: #111;             /* тёмный стиль */
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  /* NAV CONTAINER */
+  .nav {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  /* LINKS */
+  .nav a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: color 0.25s ease, transform 0.25s ease;
+  }
+  
+  /* HOVER EFFECT */
+  .nav a:hover {
+    color: #fff;
+    transform: translateY(-2px);
+  }
+  
+  /* ACTIVE ROUTE (routerLinkActive="active") */
+  .nav a.active {
+    color: #f5c518;              /* IMDb gold */
+    font-weight: 600;
+    border-bottom: 2px solid #f5c518;
+    padding-bottom: 2px;
+  }
+  
+  /* For mobile screens */
+  @media (max-width: 600px) {
+    .nav {
+      gap: 1rem;
+    }
+  
+    .nav a {
+      font-size: 1rem;
+    }
+  
+    .header {
+      padding: 0.8rem 1.2rem;
+    }
+  }
+  
