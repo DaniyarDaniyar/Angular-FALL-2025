@@ -1,6 +1,15 @@
-//import { CanDeactivateFn } from "@angular/router";
+import { CanActivateFn, Router } from '@angular/router';
+import { inject } from '@angular/core';
+import { authState, Auth } from '@angular/fire/auth';
+import { map } from 'rxjs/operators';
 
-//export const authGuard: CanDeactivateFn = () => {
- //   const token = localStorage.getItem('token');
-   // return !!token;
-//};
+export const authGuard: CanActivateFn = () => {
+  const auth = inject(Auth);
+  const router = inject(Router);
+  return authState(auth).pipe(
+    map(user => {
+      if (user) return true;
+      return router.parseUrl('/login');
+    })
+  );
+};

@@ -1,6 +1,6 @@
-<div class="login-container">
-  <div class="login-box">
-    <h2>Login</h2>
+<div class="signup-container">
+  <div class="signup-box">
+    <h2>Sign up</h2>
 
     <form (ngSubmit)="submit()">
       <div class="input-group">
@@ -13,12 +13,11 @@
         <input [(ngModel)]="password" name="password" type="password" placeholder="Enter your password" required />
       </div>
 
-      <button type="submit" class="login-btn" [disabled]="loading">{{ loading ? 'Signing in...' : 'Sign In' }}</button>
+      <button type="submit" [disabled]="loading">{{ loading ? 'Signing up...' : 'Sign Up' }}</button>
     </form>
 
     <p class="error" *ngIf="error">{{ error }}</p>
 
-    <p class="signup-text">Don't have an account? <a routerLink="/signup">Sign up</a></p>
+    <p>Already have an account? <a routerLink="/login">Login</a></p>
   </div>
 </div>
-  
