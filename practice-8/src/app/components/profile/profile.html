@@ -1,0 +1,11 @@
+<div class="profile-container">
+  <h2>Your Profile</h2>
+  <ng-container *ngIf="user$ | async as user; else noUser">
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>UID:</strong> {{ user.uid }}</p>
+    <button (click)="logout()">Logout</button>
+  </ng-container>
+  <ng-template #noUser>
+    <p>No user data available.</p>
+  </ng-template>
+</div>

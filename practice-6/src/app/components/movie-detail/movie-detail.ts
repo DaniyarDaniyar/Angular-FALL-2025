@@ -32,7 +32,7 @@ export class MovieDetail {
         this.loading.set(true);
         return this.api.getMovie(paramId).pipe(
           catchError(()=> {
-            this.error.set('Failed to load');
+            this.error.set('Failed to load movie details.');
             return of(null);
           }), 
           finalize(() => this.loading.set(false))

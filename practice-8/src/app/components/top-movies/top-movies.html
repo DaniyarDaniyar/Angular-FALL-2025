@@ -1,0 +1,29 @@
+<section class="top-container">
+    <h2>{{ title() }}</h2>
+  
+    <div class="movie-grid">
+      @for (movie of movies(); track movie.Title) {
+        <div class="movie-card">
+          <img [src]="movie.Poster" alt="{{ movie.Title }}" />
+          <h3>{{ movie.Title }}</h3>
+          <p>{{ movie.Year }}</p>
+  
+          <button class="btn-like" (click)="like(movie)">
+            👍 Like ({{ movie.Likes }})
+          </button>
+  
+          <div class="comment-box">
+            <input
+              type="text"
+              [(ngModel)]="movie.Comment"
+              placeholder="Add a comment..."
+            />
+            @if (movie.Comment) {
+              <p class="comment">💬 {{ movie.Comment }}</p>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+  

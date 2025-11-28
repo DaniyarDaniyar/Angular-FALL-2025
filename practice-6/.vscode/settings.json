@@ -1,4 +1,5 @@
 {
     "zenMode.hideStatusBar": true,
-    "workbench.activityBar.visible": true
+    "workbench.activityBar.visible": true,
+    "typescript.tsdk": "node_modules\\typescript\\lib"
 }
