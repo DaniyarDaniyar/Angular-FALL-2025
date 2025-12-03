@@ -1,0 +1,23 @@
+<div class="signup-container">
+  <div class="signup-box">
+    <h2>Sign up</h2>
+
+    <form (ngSubmit)="submit()">
+      <div class="input-group">
+        <label>Email</label>
+        <input [(ngModel)]="email" name="email" type="email" autocomplete="username" placeholder="Enter your email" required />
+      </div>
+
+      <div class="input-group">
+        <label>Password</label>
+        <input [(ngModel)]="password" name="password" type="password" autocomplete="new-password" placeholder="Enter your password" required />
+      </div>
+
+      <button type="submit" [disabled]="loading">{{ loading ? 'Signing up...' : 'Sign Up' }}</button>
+    </form>
+
+    <p class="error" *ngIf="error">{{ error }}</p>
+
+    <p>Already have an account? <a routerLink="/login">Login</a></p>
+  </div>
+</div>
