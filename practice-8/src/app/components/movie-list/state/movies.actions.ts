@@ -1,7 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { Movie, MoviePoster } from '../../../services/api';
 
-// Actions for loading movies list
 export const loadMovies = createAction(
 	'[Movies] Load Movies',
 	props<{ term: string; page?: number }>()
@@ -17,7 +16,6 @@ export const loadMoviesFailure = createAction(
 	props<{ error: any }>()
 );
 
-// Actions for loading a single movie
 export const loadMovie = createAction(
 	'[Movies] Load Movie',
 	props<{ id: string }>()

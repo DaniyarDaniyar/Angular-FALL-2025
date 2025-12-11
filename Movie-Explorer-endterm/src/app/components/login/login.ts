@@ -1,9 +1,10 @@
-
 import { Component, inject, ChangeDetectorRef, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { FavoritesService } from '../../services/favorites.service';
+import { ProfileService } from '../../services/profile.service'; // <-- 1. Import ProfileService
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,8 @@ export class Login implements OnInit, OnDestroy {
   private auth = inject(AuthService);
   private router = inject(Router);
   private cdr = inject(ChangeDetectorRef);
+  private favoritesService = inject(FavoritesService);
+  private profileService = inject(ProfileService); // <-- 2. Inject ProfileService
 
   email = '';
   password = '';
@@ -33,9 +36,24 @@ export class Login implements OnInit, OnDestroy {
     this.loading = true;
     this.error = null;
     this.auth.login(this.email, this.password).subscribe({
-      next: () => {
+      next: async (userCredential) => {
         this.loading = false;
-        this.router.navigate(['/profile']);
+        
+        const user = userCredential?.user;
+        
+        if (user) {
+          await this.profileService.initializeUserProfile(user); 
+          
+          const merged = await this.favoritesService.checkAndMergeOnLogin(user.uid);
+          
+          if (merged) {
+            this.router.navigate(['/my-list'], { queryParams: { merged: 'true' } });
+          } else {
+            this.router.navigate(['/profile']);
+          }
+        } else {
+          this.router.navigate(['/profile']);
+        }
         this.cdr.detectChanges();
       },
       error: (err) => {

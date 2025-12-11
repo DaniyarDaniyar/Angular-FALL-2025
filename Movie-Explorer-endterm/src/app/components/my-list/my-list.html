@@ -1,0 +1,48 @@
+<div class="my-list-container">
+  <h2>Мой список избранного</h2>
+
+  @if (message()) {
+    <div class="message success">
+      <p>{{ message() }}</p>
+    </div>
+  }
+
+  @if (loading()) {
+    <div class="loading">
+      <p>Загрузка избранных фильмов...</p>
+    </div>
+  }
+
+  @if (error()) {
+    <div class="error">
+      <p>{{ error() }}</p>
+    </div>
+  }
+
+  @if (!loading() && !error() && movies().length > 0) {
+    <div class="movies-grid">
+      @for (movie of movies(); track movie.imdbID) {
+        <div class="movie-card">
+          <div class="movie-poster" (click)="goToMovieDetail(movie.imdbID)">
+            <img [src]="movie.Poster !== 'N/A' ? movie.Poster : '/assets/no-poster.png'" 
+                 [alt]="movie.Title"
+                 (error)="$event.target.src = '/assets/no-poster.png'" />
+            <button class="remove-btn" 
+                    (click)="removeFromFavorites(movie.imdbID); $event.stopPropagation()"
+                    title="Удалить из избранного">
+              ❌
+            </button>
+          </div>
+          <div class="movie-info">
+            <h3 (click)="goToMovieDetail(movie.imdbID)">{{ movie.Title }}</h3>
+            <p class="year">{{ movie.Year }}</p>
+            <p class="rating">⭐ {{ movie.imdbRating !== 'N/A' ? movie.imdbRating : 'N/A' }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>
+
+
+

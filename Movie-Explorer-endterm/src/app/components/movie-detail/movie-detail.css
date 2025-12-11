@@ -75,10 +75,56 @@
     color: gold;
   }
   
+  /* FAVORITE MESSAGE */
+  .favorite-message {
+    margin-top: 12px;
+    padding: 8px 12px;
+    background: rgba(40, 167, 69, 0.2);
+    border: 1px solid rgba(40, 167, 69, 0.5);
+    border-radius: 8px;
+    color: #51cf66;
+    font-size: 14px;
+  }
+
+  /* ACTION BUTTONS */
+  .action-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+
+  .favorite-btn {
+    padding: 10px 16px;
+    background: #333;
+    color: #fff;
+    border: 2px solid #555;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s;
+    font-size: 14px;
+  }
+
+  .favorite-btn:hover {
+    background: #444;
+    border-color: #666;
+  }
+
+  .favorite-btn.favorited {
+    background: #dc3545;
+    border-color: #c82333;
+    color: #fff;
+  }
+
+  .favorite-btn.favorited:hover {
+    background: #c82333;
+    border-color: #bd2130;
+  }
+
   /* IMDB LINK */
   .imdb-link {
     display: inline-block;
-    margin-top: 12px;
     padding: 10px 16px;
     background: #f5c518;
     color: #000;

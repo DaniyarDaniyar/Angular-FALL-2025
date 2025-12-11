@@ -32,7 +32,6 @@ export const initialState: ItemsState = {
 
 export const moviesReducer = createReducer(
 	initialState,
-	// Load list
 	on(loadMovies, (state) => ({
 		...state,
 		loadingList: true,
@@ -51,7 +50,6 @@ export const moviesReducer = createReducer(
 		listError: error,
 	})),
 
-	// Load single movie
 	on(loadMovie, (state) => ({
 		...state,
 		loadingDetails: true,

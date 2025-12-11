@@ -3,10 +3,22 @@
                 <a routerLink="/" routerLinkActive="active">Home</a>
                 <a routerLink="/movies" routerLinkActive="active">Search</a>
                 <a routerLink="/top-movies" routerLinkActive="active">Top-10</a>
+                <a routerLink="/my-list" routerLinkActive="active">My List</a>
 
                 <ng-container *ngIf="user$ | async as user; else loggedOut">
-                    <a routerLink="/profile" routerLinkActive="active">Profile</a>
-                    <a href="#" (click)="logout(); $event.preventDefault()">Logout</a>
+                    <div class="user-section">
+                        <a routerLink="/profile" routerLinkActive="active" class="profile-link">
+                            <img *ngIf="profilePictureUrl$ | async as url; else noPicture" 
+                                 [src]="url" 
+                                 alt="Profile" 
+                                 class="profile-picture-small" />
+                            <ng-template #noPicture>
+                                <div class="profile-picture-placeholder">👤</div>
+                            </ng-template>
+                            <span>Profile</span>
+                        </a>
+                        <a href="#" (click)="logout(); $event.preventDefault()">Logout</a>
+                    </div>
                 </ng-container>
                 <ng-template #loggedOut>
                     <a routerLink="/login" routerLinkActive="active">Login</a>

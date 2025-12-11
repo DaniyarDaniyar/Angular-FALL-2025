@@ -1,25 +1,28 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { from, Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import {
-  getAuth,
+import { Auth } from '@angular/fire/auth';
+import { 
   onAuthStateChanged,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signOut,
   User,
-} from 'firebase/auth';
-import { firebaseApp } from '../app.config';
+} from 'firebase/auth'; 
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private get auth() {
-    return getAuth(firebaseApp);
-  }
+  // Inject the AngularFire Auth service directly
+  private readonly auth: Auth = inject(Auth);
 
   get currentUser$(): Observable<User | null> {
     return new Observable((subscriber) => {
-      const unsubscribe = onAuthStateChanged(this.auth, (user) => subscriber.next(user), (err) => subscriber.error(err));
+      // Use the injected 'this.auth' instance
+      const unsubscribe = onAuthStateChanged(
+        this.auth,
+        (user) => subscriber.next(user),
+        (err) => subscriber.error(err)
+      );
       return { unsubscribe };
     });
   }

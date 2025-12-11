@@ -10,12 +10,99 @@
 }
 
 .profile-container h2 {
-	margin-bottom: 12px;
+	margin-bottom: 24px;
 }
 
-.profile-container p { margin: 8px 0; font-size: 15px }
+.profile-container h3 {
+	margin-bottom: 16px;
+	font-size: 1.2rem;
+}
 
-.profile-container button {
+.profile-content {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 2rem;
+}
+
+.profile-picture-section,
+.profile-info-section {
+	display: flex;
+	flex-direction: column;
+}
+
+.picture-container {
+	margin-bottom: 1rem;
+}
+
+.profile-picture {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	object-fit: cover;
+	border: 3px solid #f5c518;
+}
+
+.no-picture {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	background: #333;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 3px solid #555;
+	color: #999;
+}
+
+.upload-section {
+	margin-bottom: 1rem;
+}
+
+.upload-button {
+	display: inline-block;
+	padding: 10px 20px;
+	background: #f5c518;
+	color: #000;
+	border-radius: 8px;
+	cursor: pointer;
+	font-weight: 600;
+	transition: background 0.2s;
+}
+
+.upload-button:hover:not(.disabled) {
+	background: #d4a712;
+}
+
+.upload-button.disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+.message {
+	padding: 0.75rem;
+	border-radius: 8px;
+	margin-top: 0.5rem;
+	font-size: 0.9rem;
+}
+
+.message.error {
+	background-color: rgba(220, 53, 69, 0.2);
+	border: 1px solid rgba(220, 53, 69, 0.5);
+	color: #ff6b6b;
+}
+
+.message.success {
+	background-color: rgba(40, 167, 69, 0.2);
+	border: 1px solid rgba(40, 167, 69, 0.5);
+	color: #51cf66;
+}
+
+.profile-info-section p { 
+	margin: 8px 0; 
+	font-size: 15px;
+}
+
+.profile-info-section button {
 	margin-top: 12px;
 	padding: 10px 14px;
 	background: #f5c518;
@@ -23,8 +110,22 @@
 	border-radius: 8px;
 	cursor: pointer;
 	font-weight: 600;
+	color: #000;
+}
+
+.profile-info-section button:hover {
+	background: #d4a712;
+}
+
+@media (max-width: 768px) {
+	.profile-content {
+		grid-template-columns: 1fr;
+	}
 }
 
 @media (max-width: 600px) {
-	.profile-container { margin: 1rem; padding: 16px }
+	.profile-container { 
+		margin: 1rem; 
+		padding: 16px;
+	}
 }

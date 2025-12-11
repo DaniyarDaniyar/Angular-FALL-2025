@@ -42,14 +42,29 @@
           <p class="rating">
             ⭐ <strong>{{ movie()!.imdbRating }}</strong> / 10
           </p>
-  
-          <a
-            class="imdb-link"
-            target="_blank"
-            [href]="'https://www.imdb.com/title/' + movie()!.imdbID"
-          >
-            View on IMDb ↗
-          </a>
+
+          @if (favoriteMessage()) {
+            <div class="favorite-message">
+              <p>{{ favoriteMessage() }}</p>
+            </div>
+          }
+
+          <div class="action-buttons">
+            <button 
+              class="favorite-btn"
+              [class.favorited]="isFavorite()"
+              (click)="toggleFavorite()">
+              {{ isFavorite() ? '❤️ В избранном' : '🤍 Добавить в избранное' }}
+            </button>
+
+            <a
+              class="imdb-link"
+              target="_blank"
+              [href]="'https://www.imdb.com/title/' + movie()!.imdbID"
+            >
+              View on IMDb ↗
+            </a>
+          </div>
         </div>
       </div>
     }

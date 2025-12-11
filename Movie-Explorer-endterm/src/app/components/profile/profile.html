@@ -1,11 +1,57 @@
 <div class="profile-container">
-  <h2>Your Profile</h2>
+  <h2>Ваш профиль</h2>
   <ng-container *ngIf="user$ | async as user; else noUser">
-    <p><strong>Email:</strong> {{ user.email }}</p>
-    <p><strong>UID:</strong> {{ user.uid }}</p>
-    <button (click)="logout()">Logout</button>
+    <div class="profile-content">
+      <div class="profile-picture-section">
+        <h3>Фото профиля</h3>
+        <div class="picture-container">
+          <ng-container *ngIf="profile$ | async as profile; else noPicture">
+            @if (profile.profilePictureUrl) {
+              <img [src]="profile.profilePictureUrl" alt="Profile Picture" class="profile-picture" />
+            } @else {
+              <div class="no-picture">Нет фото</div>
+            }
+          </ng-container>
+          <ng-template #noPicture>
+            <div class="no-picture">Нет фото</div>
+          </ng-template>
+        </div>
+        
+        <div class="upload-section">
+          <input 
+            type="file" 
+            id="profile-picture-input" 
+            accept="image/jpeg,image/jpg,image/png"
+            (change)="onFileSelected($event)"
+            [disabled]="uploading()"
+            style="display: none;" />
+          <label for="profile-picture-input" class="upload-button" [class.disabled]="uploading()">
+            {{ uploading() ? 'Загрузка...' : 'Загрузить фото' }}
+          </label>
+        </div>
+
+        @if (uploadError()) {
+          <div class="message error">
+            <p>{{ uploadError() }}</p>
+          </div>
+        }
+
+        @if (uploadSuccess()) {
+          <div class="message success">
+            <p>{{ uploadSuccess() }}</p>
+          </div>
+        }
+      </div>
+
+      <div class="profile-info-section">
+        <h3>Информация</h3>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>UID:</strong> {{ user.uid }}</p>
+        <button (click)="logout()">Выйти</button>
+      </div>
+    </div>
   </ng-container>
   <ng-template #noUser>
-    <p>No user data available.</p>
+    <p>Нет данных пользователя.</p>
   </ng-template>
 </div>

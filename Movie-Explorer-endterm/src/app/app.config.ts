@@ -1,38 +1,52 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection, isDevMode } from '@angular/core';
+import { ApplicationConfig, provideZonelessChangeDetection, isDevMode } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
-import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
-import { environment } from '../environments/environment';
-import { initializeApp } from 'firebase/app';
-import 'firebase/auth';
-import { provideFirebaseApp } from '@angular/fire/app';
+import { provideServiceWorker } from '@angular/service-worker';
+import { provideBrowserGlobalErrorListeners } from '@angular/core';
+
+// Angular Fire Imports
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideStorage, getStorage } from '@angular/fire/storage';
+
+// State Management
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
-import { MoviesEffects } from './components/movie-list/state/movies.effects';
-import { moviesReducer } from './components/movie-list/state/movies.reducer';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
-import { provideServiceWorker } from '@angular/service-worker';
+import { moviesReducer } from './components/movie-list/state/movies.reducer';
+import { MoviesEffects } from './components/movie-list/state/movies.effects';
 
-export const firebaseApp = initializeApp(environment.firebase);
+// Environment
+import { routes } from './app.routes';
+import { environment } from '../environments/environment';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    provideFirebaseApp(() => firebaseApp),
-    provideAuth(() => getAuth(firebaseApp)),
     provideRouter(routes),
     provideHttpClient(),
+
+    // --- FIX STARTS HERE ---
+    // 1. Initialize the app INSIDE the provider
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    
+    // 2. Remove arguments from these functions. 
+    // The library automatically injects the default app.
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
+    // --- FIX ENDS HERE ---
+
     provideStore({ movies: moviesReducer }),
     provideEffects(MoviesEffects),
-    provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }), provideServiceWorker('ngsw-worker.js', {
-            enabled: !isDevMode(),
-            registrationStrategy: 'registerWhenStable:30000'
-          }), provideServiceWorker('ngsw-worker.js', {
-            enabled: !isDevMode(),
-            registrationStrategy: 'registerWhenStable:30000'
-          })
-],
+    provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
+    
+    // Fixed: You had this listed twice in your original code
+    provideServiceWorker('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      registrationStrategy: 'registerWhenStable:30000'
+    })
+  ],
 };

@@ -41,10 +41,45 @@
     padding-bottom: 2px;
   }
   
+  /* USER SECTION */
+  .user-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: auto;
+  }
+
+  .profile-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .profile-picture-small {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #f5c518;
+  }
+
+  .profile-picture-placeholder {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #555;
+    font-size: 18px;
+  }
+
   /* For mobile screens */
   @media (max-width: 600px) {
     .nav {
       gap: 1rem;
+      flex-wrap: wrap;
     }
   
     .nav a {
@@ -53,6 +88,16 @@
   
     .header {
       padding: 0.8rem 1.2rem;
+    }
+
+    .user-section {
+      margin-left: 0;
+      width: 100%;
+      justify-content: flex-end;
+    }
+
+    .profile-link span {
+      display: none;
     }
   }
   
